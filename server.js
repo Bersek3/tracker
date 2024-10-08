@@ -5,8 +5,8 @@ const cors = require('cors');
 const path = require('path'); // Importar path para servir archivos estáticos
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); // Permitir CORS
+app.use(bodyParser.json()); // Parsear JSON
 
 // Servir archivos estáticos desde el directorio actual
 app.use(express.static(path.join(__dirname))); // Asegúrate de que el HTML esté en el directorio raíz
@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname))); // Asegúrate de que el HTML est�
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html')); // Servir index.html
 });
+
 // Endpoint para recibir reseñas
 app.post('/api/reviews', (req, res, next) => {
     const newReview = req.body;
@@ -63,7 +64,10 @@ app.get('/api/reviews', (req, res) => {
     });
 });
 
+// Configuración del puerto
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
+
+

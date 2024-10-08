@@ -149,13 +149,13 @@
             rating: parseInt(rating)
         };
 
-        fetch('/api/reviews', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(review)
-        })
+        fetch('https://automatic-cod-r4gxp96pw7j7cpj5r-4000.app.github.dev/api/reviews', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review)
+})
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al enviar la reseña');
