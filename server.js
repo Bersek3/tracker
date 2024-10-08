@@ -5,7 +5,12 @@ const cors = require('cors');
 const path = require('path'); // Importar path para servir archivos estáticos
 
 const app = express();
-app.use(cors()); // Permitir CORS
+// Configurar CORS para permitir solicitudes desde tu dominio
+app.use(cors({
+    origin: 'https://bersek3.github.io', // Permite solicitudes solo desde este origen
+    methods: ['GET', 'POST'], // Especifica los métodos que permites
+    allowedHeaders: ['Content-Type'] // Especifica los headers permitidos
+}));
 app.use(bodyParser.json()); // Parsear JSON
 
 // Servir archivos estáticos desde el directorio actual
